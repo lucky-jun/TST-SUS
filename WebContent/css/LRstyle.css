@@ -1,0 +1,81 @@
+html,body{ height: 100% }/* 解决div 100%高度无效的情况*/
+body{
+    /* 设置填充整个页面 */
+	margin:0;
+    padding: 0;
+}
+#bg{
+    position: relative;
+    background-image: linear-gradient(to bottom right,#92FFC0,#002661);
+    width: 100%;
+    height: 100%;
+}
+#formset{
+    position: absolute;
+    background-color: #c1b292b3;
+    width: 220px;
+    top: 50%;
+    left: 50%;
+    padding: 20px 50px;
+	margin-left: -160px;
+	margin-top: -150px;/*设置位置*/
+    border-radius: 30px;/*圆角边框*/
+    box-shadow:0 5px 80px #000201;/*添加阴影*/
+}
+#formset h2{
+    font-size: 28px;
+    color: #454a4a;
+}
+#formset a{
+    margin-top: 15px;
+    float: right;
+    text-decoration: none;/*去掉链接下的下划线*/
+}
+/* 链接未被访问时 */
+a:link{
+    color: black;
+    font-size: 10pt;
+}
+/* 鼠标在上面时 */
+a:hover{
+    color: black;
+    font-size: 12pt;
+}
+/* 被点击时 */
+a:active{
+    color: red;
+    font-size: 10pt;
+}
+/* 已被访问过时 */
+a:visited{
+    color: blue;
+}
+
+#content{
+    text-align: center;
+}
+.inputText{
+    margin: 5px 0;
+    padding: 5px;
+    border: none;/*去掉外面的灰色边框，保留底下的灰线*/
+    border-bottom: 1px solid #000000;
+    background: transparent;/*去掉输入框的白色背景*/
+}
+.inputText:focus{
+    outline: none;/*去掉激活输入框时的蓝色边框*/
+}
+/*输入框： placeholder中的文字居中 */
+input::-webkit-input-placeholder{
+    text-align: center;
+}
+.btn{
+    background-color:  #0070c9;
+    /* background:linear-gradient(#42a1ec42,#0070c926); */
+    
+    background-image: linear-gradient(to bottom right,#c8cac6,#7b8473);
+    border-radius: 6px;
+    padding: 10px 30px;
+    margin-top: 20px;
+    outline: none;/*激活按钮时去掉蓝色边框*/
+    cursor: pointer;/*让鼠标放在上面的变成小手*/
+}

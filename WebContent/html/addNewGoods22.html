@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>editmanager 编辑管理员</title>
+    <link rel="stylesheet" href="../css/layui.css" media="all">
+	<link rel="stylesheet" href="../laydate/theme/default/laydate.css" media="all">
+	<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+ 	<!-- <script type="text/javascript" src="../laydate/laydate.js"></script> -->
+    <script type="text/javascript" src="../js/TimeJs.js"></script>  
+    <script type="text/javascript" src="../js/utilSession.js"></script> 
+    <script type="text/javascript" src="../js/addNewGoods.js"></script> 
+    <script type="text/javascript" src="../js/formCheck2.js"></script> 
+</head>
+<style>
+.layui-form-label{
+	margin-left:75px; 
+	width:205px;
+}
+.layui-input-block{
+	margin-left:315px; 
+	width:300px;
+}
+</style>
+<body>
+    <div class="layui-row" style="margin-top:50px ;text-align: center;">
+        <div class="layui-col-md4">
+            <div class="grid-demo" style="margin:1px"></div>
+        </div>
+        <div class="layui-col-md3">
+            <div class="grid-demo">
+                <div class="layui-form">
+<!--                     <div class="layui-form-item">
+                        <label class="layui-form-label">ID</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="g_id" name="" placeholder="请输入用户名" autocomplete="off" class="layui-input" disabled="disabled">
+                        </div>
+                    </div> -->
+                    
+<!--                     <label>
+	                    <input type="text" class="inputText" maxlength="20" placeholder="请输入用户名"
+	                    	onfocus="LshowTip('span_username','<font color=red>X</font>')"
+	                    	onblur="LcheckuserName(this)"
+	                    	onkeyup="LcheckuserName(this)"
+	                    	id="username" name="username">
+	                    <span id="span_username"></span>
+                    </label> -->
+                    
+                    
+                     <div class="layui-form-item">
+                     	<!-- <label> -->
+	                        <label class="layui-form-label">商品名 <text style="color:red">(必填)</text>
+	                            </label>
+	                        <div class="layui-input-block">
+	                            <input type="text" id="g_name" name="" lay-verify="g_name"  placeholder="请输入商品名" autocomplete="off" class="layui-input"
+	                            onfocus="if(this.value==''){LshowTip('span_g_name','<font color=red>未输入值</font>')}"
+		                    	onblur="Lcheckg_name(this)"
+		                    	onkeyup="Lcheckg_name(this)">
+		                    	<span id="span_g_name" clss="spandCss"></span>
+	                        </div>
+                        <!-- </label> -->
+                    </div> 
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">单价 <text style="color:red">(必填)</text></label>
+                        <div class="layui-input-block">
+                            <input type="text" id="g_price" name="" lay-verify="g_price"  placeholder="请输入单价" autocomplete="off" class="layui-input"
+	                            onfocus="if(this.value==''){LshowTip('span_g_price','<font color=red>未输入值</font>')}"
+		                    	onblur="Lcheckg_price(this)"
+		                    	onkeyup="Lcheckg_price(this)">
+		                    	<span id="span_g_price" clss="spandCss"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">条形码 <text style="color:red">(必填)</text></label>
+                        <div class="layui-input-block">
+                            <input type="text" id="g_code" name=""  lay-verify="g_code" placeholder="请输入条形码" autocomplete="off" class="layui-input"
+	                            onfocus="if(this.value==''){LshowTip('span_g_code','<font color=red>未输入值</font>')}"
+		                    	onblur="Lcheckg_code(this)"
+		                    	onkeyup="Lcheckg_code(this)">
+		                    	<span id="span_g_code" clss="spandCss"></span>
+                        </div>
+                    </div>
+                                        <div class="layui-form-item">
+                        <label class="layui-form-label">是否促销</label>
+                        <div class="layui-input-block">
+                            <select name="interest" id="g_discount" lay-filter="aihao">
+                                <option value="0">---请选择---</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否限期销售</label>
+                        <div class="layui-input-block">
+                            <select name="interest" id="g_promt_data" lay-filter="aihao">
+                                <option value="0">---请选择---</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否限量销售</label>
+                        <div class="layui-input-block">
+                            <select name="interest" id="g_promt_num" lay-filter="aihao">
+                                <option value="0">---请选择---</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">促销价格</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="g_promt_price" name=""  value="" placeholder="请输入促销价格" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">限期开始时间和结束时间</label>
+                        <div class="layui-input-block">
+                             <!-- <input type="text" id="g_promt_date_start" name="" value=""  placeholder="请输入限期开始时间,例：2001-01-21" autocomplete="off" class="layui-input"> -->
+									<input id="g_promt_date_start" placeholder="请输入选择限期开始时间和结束时间" type="text" class="layui-input"/>
+                         </div>
+                    </div>
+<!--                     <div class="layui-form-item">
+                        <label class="layui-form-label">限期结束时间</label>
+                        <div class="layui-input-block">
+                             <input type="text" id="g_promt_date_stop" name="" value=""  placeholder="请输入限期结束时间,例：2001-01-21" autocomplete="off" class="layui-input">
+                            <input id="g_promt_date_stop" placeholder="请输入选择结束时间" type="text" class="layui-input"/>
+                        </div>
+                    </div> -->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">限制销售数量</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="g_promt_num_number" name="" value=""  placeholder="请输入限制销售数量" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">商品数量 <text style="color:red">(必填)</text></label>
+                        <div class="layui-input-block">
+                            <input type="text" id="g_stock" name=""  lay-verify="g_number" placeholder="请输入库存量" autocomplete="off" class="layui-input"
+	                            onfocus="if(this.value==''){LshowTip('span_g_stock','<font color=red>未输入值</font>')}"
+		                    	onblur="Lcheckg_stock(this)"
+		                    	onkeyup="Lcheckg_stock(this)">
+		                    	<span id="span_g_stock" clss="spandCss"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">报警数量</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="g_stock_urgent" name=""  value="" placeholder="请输入报警商品库存数量" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">计划进货数</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="g_plan" name=""  value="" placeholder="请输入计划进货数" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否允许销售 <text style="color:red">(必填)</text></label>
+                        <div class="layui-input-block">
+                            <select name="interest" id="g_sale" lay-verify="g_sales" lay-filter="aihao">
+                                <option value="0">---请选择，默认  否  ---</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+<!--                     <div class="layui-form-item">
+                        <label class="layui-form-label">生产厂商ID <text style="color:red">(必填)</text></label>
+                        <div class="layui-input-block">
+                            <input type="text" id="mf_id" name="" value="0"  placeholder="请输入生产厂商ID" autocomplete="off" class="layui-input">
+                        </div>
+                    </div> -->
+
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">
+	                            <div class="layui-btn layui-btn-sm" data-type="reload" lay-filter="rechar_btn" id="rechar_btn" lay-event="sousuo" >
+									添加新的生产厂商
+								</div>
+                        		生产厂商名称
+                        	</label>
+								<div class="layui-input-block">
+						           <select name="mf_name" id="mf_name" lay-verify="mf_name" lay-filter="xmFilter">
+						               <option value=""></option>
+						           </select>
+						        </div>
+						</div>
+<!-- 					<div class="layui-form-item ">
+                        <label class="layui-form-label">生产厂商名称 </label>
+                        <div class="layui-input-block">
+                        	<form class="layui-form" action="" lay-filter="prg" >
+	                        	<select id="mf_name" name="mf_name" lay-verify="required"  lay-filter="business" class="select">
+	                                <option value="-1">---请选择---</option>
+	                				<option value="" ></option>
+	            				</select>
+	                            <input type="text" id="mf_name" name="" value="0"  placeholder="请输入生产厂商名称" autocomplete="off" class="layui-input">
+                            </form>
+                        </div>
+                    </div> -->
+<!--                     <div class="layui-form-item">
+                        <label class="layui-form-label">生产厂商地址 </label>
+                        <div class="layui-input-block">
+                            <input type="text" id="mf_add" name=""  value="0" placeholder="请输入生产厂商地址" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">生产厂商电话 </label>
+                        <div class="layui-input-block">
+                            <input type="text" id="mf_tel" name=""  value="0" placeholder="请输入生产厂商联系方式" autocomplete="off" class="layui-input">
+                        </div>
+                    </div> -->
+<!--                     <div class="layui-form-item">
+                        <label class="layui-form-label">供货商ID <text style="color:red">(必填)</text></label>
+                        <div class="layui-input-block">
+                            <input type="text" id="sp_id" name=""  value="0" placeholder="请输入供货商ID" autocomplete="off" class="layui-input" >
+                        </div>
+                    </div> -->
+                    
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">
+                            <div class="layui-btn layui-btn-sm" data-type="reload" lay-filter="rechar_btn" id="rechar_btn" lay-event="sousuo" >
+								添加新的供货商
+							</div>
+                        	供货商名称
+                        </label>
+                        <div class="layui-input-block">
+				           <select name="sp_name" id="sp_name" lay-verify="sp_name" lay-filter="xmFilter">
+				               <option value=""></option>
+				           </select>
+                            <!-- <input type="text" id="sp_name" name=""  value="0" placeholder="请输入供货商名称" autocomplete="off" class="layui-input" > -->
+                        </div>
+                    </div>
+                    <!-- <div class="layui-form-item">
+                        <label class="layui-form-label">供货商地址</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="sp_add" name=""  value="0" placeholder="请输入供货商地址" autocomplete="off" class="layui-input" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">供货商电话</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="sp_tel" name="" value="0"  placeholder="请输入供货商ID联系方式" autocomplete="off" class="layui-input" >
+                        </div>
+                    </div> -->
+
+                    <div class="layui-form-item" style="display:none">
+                        <div class="layui-input-block">
+                            <!-- <button id="submit" class="layui-btn" lay-submit lay-filter="submit">立即提交</button> -->
+                            <button id="submit" class="layui-btn" value="" onclick="che()" lay-filter="submit">立即提交</button>
+                            <!-- <button type="reset" class="layui-btn layui-btn-primary">重置</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--         <div class="layui-col-md5">
+            <div class="grid-demo" style="margin:1px"></div>
+        </div> -->
+    </div>
+
+
+<!--      <script src="../layui.js"></script> --> 
+<!--      <script>
+        layui.use('form', function () {
+            var form = layui.form;
+
+            //各种基于事件的操作，下面会有进一步介绍
+        });
+    </script>   -->
+
+</body>
+
+<script type="text/javascript">
+/* $(function () {
+	//给id为btn1的元素已添加点击事件
+	$("#submit").click( */
+			/* var xxxxxxxxxxxxx = Lcheckflage();
+			console.log("aaaaaaa:"+xxxxxxxxxxxxx); */
+/* 	}); */
+/* }) */
+
+
+
+/* layui.use(['form', 'layedit', 'laydate','layer'], function(){
+	var layer = layui.layer;
+	var form = layui.form;
+	var g_name = false;
+	var g_price = false;
+	var g_code = false;
+	var g_number = false;
+	var mf_name = false;
+	var sp_name = false;
+	var g_sales = false;
+	//自定义验证规则
+	form.verify({
+	  g_name: function(value){
+	    if(value.length < 1){
+	      return '商品名称至少1个字符';
+	    }else{
+	    	g_name=true;
+	    }
+	  }
+	  ,pass: [
+	    /^[\S]{6,12}$/
+	    ,'密码必须6到12位，且不能出现空格'
+	  ]
+	  ,g_price:function(value){
+		    if(value.length < 1){
+			      return '商品价格未输入';
+			    }else{
+			    	g_price=true
+			    }
+			  }
+	  ,g_code:function(value){
+		    if(value.length < 1){
+			      return '商品条形码未输入';
+			    }else{
+			    	g_code=true
+			    }
+			  }
+	  ,g_number:function(value){
+		    if(value.length < 1){
+			      return '商品数量未输入';
+			    }else{
+			    	g_number=true
+			    }
+			  }
+	  ,mf_name:function(value){
+		    if(value.length < 1){
+			      return '商品生产厂商未选择';
+			    }else{
+			    	mf_name=true
+			    }
+			  }
+	  ,sp_name:function(value){
+		    if(value.length < 1){
+			      return '商品供货商未选择';
+			    }else{
+			    	sp_name=true
+			    }
+			  }
+	  ,g_sales:function(value){
+		    if(value.length < 1){
+			      return '商品是否允许销售未选择';
+			    }else{
+			    	g_sales=true
+			    }
+			  }
+	});
+	
+	function formcheck(){
+		layer.alert("表单校验的值："+g_name && g_price && g_code && g_number && mf_name && sp_name && g_sales)
+		return g_name && g_price && g_code && g_number && mf_name && sp_name && g_sales;
+	}
+}) */
+</script>
+</html>

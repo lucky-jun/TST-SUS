@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>超市管理系统</title>
+    <link rel="stylesheet" href="./css/layui.css">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    <script src="./layui.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="./js/utilSession.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+<!--     <style type="text/css">
+     .layui-table-page {
+   
+    
+    position: fixed;
+    bottom: 0;
+}
+
+.layui-table-box {
+    margin-bottom: 30px;
+} 
+ -->
+  <style type="text/css">
+  	.layui-table-cell {
+		height: 24px;
+		line-height: 24px;
+}
+  </style>
+    </style>
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">超市管理系统</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="">控制台</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">基础数据管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">数据字典管理</a></dd>
+                        <dd><a href="">产品信息查询</a></dd>
+                        <dd><a href="">用户信息查询</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">用户</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其它</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">邮件管理</a></dd>
+                        <dd><a href="">消息管理</a></dd>
+                        <dd><a href="">授权管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                       <!--  <img src="http://t.cn/RCzsdCq" class="layui-nav-img"> -->
+                        <img src="#" class="layui-nav-img">
+                        贤心
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="login.html">退了</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">商品信息</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">商品信息</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">商品管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">###</a></dd>
+                            <dd><a href="javascript:;">###</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">库存管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">###</a></dd>
+                            <dd><a href="javascript:;">###</a></dd>
+                            <dd><a href="javascript:;">###</a></dd>
+                            <dd><a href="javascript:;">###</a></dd>
+                            <dd><a href="javascript:;">###</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">销售报表</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">###</a></dd>
+                            <dd><a href="javascript:;">###</a></dd>
+                            <dd><a href="javascript:;">###</a></dd>
+                            <dd><a href="javascript:;">###</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">人员管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">###</a></dd>
+                            <dd><a href="javascript:;">###</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+         <div class="layui-body" id="neirong"> 
+            <!-- 内容主体区域 -->
+		<div id="toolbarDemo" style="display:none;">
+<!-- 	<div class="demoTable" id="div111">
+		搜索ID：
+		<div class="layui-inline">
+			<input class="layui-input" name="demoReload" id="demoReload" lay-event="inputa" autocomplete="off">
+		</div>
+		<div class="layui-btn" data-type="reload" lay-filter="rechar_btn" id="rechar_btn" lay-event="sousuo">
+			搜索
+		</div>
+	</div> -->
+	<div class="layui-btn-container"  style="float: left;">
+			<button type="button" class="layui-btn layui-btn-sm" lay-event="add">添加新商品</button>
+			<button type="button" class="layui-btn layui-btn-sm" lay-event="offshelf" class="layui-btn layui-btn-disabled">批量下架</button>
+			<button type="button" class="layui-btn layui-btn-sm " lay-event="delete">批量删除</button>
+	</div>
+</div>
+ 	<div class="demoTable" id="div111">
+		<div class="layui-inline">
+			<input placeholder="请输入查找的商品名" class="layui-input" name="demoReload" id="demoReload" lay-event="inputa" autocomplete="off">
+		</div>
+		<div style="/* border:2px red solid; */" class="layui-btn" data-type="reload" lay-filter="rechar_btn" id="rechar_btn" lay-event="sousuo" >
+			搜索
+		</div>
+		<div style="position: relative;/* border:2px red solid; */top:0px; left:0px; " >
+			<input type="radio" name="query" value="jingque" title="精确查询" checked lay-filter="ChoiceRadio">精确查询
+			<input type="radio" name="query" value="mohu" title="模糊查询" lay-filter="ChoiceRadio">模糊查询
+			<input type="radio" name="query" value="mf_name" title="生产厂商查询"lay-filter="ChoiceRadio" >生产厂商查询
+			<input type="radio" name="query" value="sp_name" title="供应商商查询" lay-filter="ChoiceRadio">供应商商查询
+		</div>
+	</div> 
+	
+	<div id="userBar" style="display:none">
+		<a class="layui-btn layui-btn-xs" lay-event="add">添加</a>
+		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+		<!-- <input class="layui-input-block" type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否"> -->
+		<a class="layui-btn layui-btn-xs" data-method="confirmTrans" lay-event="del">删除</a>
+	</div> 
+
+
+<table class="layui-hide" id="table_user" lay-filter="user"></table> 
+               
+      
+		
+		
+        </div>
+
+
+
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © j.com - 超市管理系统
+        </div>
+    </div>
+
+</body>
+    <!-- <script type="text/javascript" src="./js/formCheck.js"></script> -->
+</html>

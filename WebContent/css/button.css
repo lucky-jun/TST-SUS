@@ -1,0 +1,11 @@
+.btn{
+    background-color:  #0070c9;
+    /* background:linear-gradient(#42a1ec42,#0070c926); */
+    
+    background-image: linear-gradient(to bottom right,#c8cac6,#7b8473);
+    border-radius: 6px;
+    padding: 10px 30px;
+    margin-top: 20px;
+    outline: none;
+    cursor: pointer
+}

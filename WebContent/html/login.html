@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录界面</title>
+    <link rel="stylesheet" href="../css/LRstyle.css">
+</head>
+<body>
+    <!-- 背景框 -->
+    <div id="bg">
+        <!-- 表单 -->
+        <div id="formset">
+            <!-- 内容框 -->
+            <div id="content">
+                <h2>登&nbsp;&nbsp;录</h2>
+                    <label>
+                    <input type="text" class="inputText" maxlength="20" placeholder="请输入用户名"
+                    onfocus="LshowTip('span_username','<font color=red>X</font>')"
+                    onblur="LcheckuserName(this)"
+                    onkeyup="LcheckuserName(this)"
+                    id="username" name="username">
+                    <span id="span_username"></span>
+                    </label>
+
+                    <br>
+                    <label>
+                    <input type="password" class="inputText" maxlength="20" placeholder="请输入密码"
+                    onfocus="LshowTip('span_password','<font color=red>X</font>')"
+                    onblur="LcheckpassWord(this)"
+                    onkeyup="LcheckpassWord(this)"
+                    id="password" name="password">
+                    <span id="span_password"></span><br>
+                    <span id="spanmsg"></span>
+                    </label>
+                    <br>
+                    <button class="btn" onclick="login()">登录</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button class="btn" onclick="location.href='./register.html'">注册</button>
+
+                    <br>
+                    <a href="#">忘记密码</a>
+            </div>
+            <!-- 内容框END -->
+        </div>
+        <!-- 表单END -->
+    </div>
+    <!-- 背景框END -->
+</body>
+<script type="text/javascript" src="../js/LRstyle.js"rel="script"></script>
+<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../js/utilSession.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
+</html>

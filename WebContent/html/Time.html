@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>时间插件</title>
+<!-- 引入laydate.js文件-->
+<link rel="stylesheet" href="../laydate/theme/default/laydate.css" media="all">
+<script type="text/javascript" src="../laydate/laydate.js"></script>
+<script src="../layui.js"></script>
+<script type="text/javascript" src="../js/TimeJs.js"></script>
+</head>
+<body>
+<!-- 创建input文本框，并给id -->
+开始时间:<input id="shijian" type="text" />
+</body>
+<!-- <script>
+//执行一个laydate实例
+laydate.render({
+elem: '#shijian', //指定元素
+/* value: 'new Date()', */
+isInitValue: false, 
+format: 'yyyy-MM-dd',
+min: 'new Date()' ,//设定最小日期为当前日期
+max: 90, //设置当前日期后最大可选择天数
+theme: '#ABDCFF',//主题显示
+type: 'datetime', //选择时间
+});
+
+</script> -->
+</html>

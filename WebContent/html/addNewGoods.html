@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>editmanager 编辑管理员</title>
+    <link rel="stylesheet" href="../css/layui.css" media="all">
+	<link rel="stylesheet" href="../laydate/theme/default/laydate.css" media="all">
+	<script type="text/javascript" src="../layui.js"></script>
+<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+ 	<!-- <script type="text/javascript" src="../laydate/laydate.js"></script> -->
+    <script type="text/javascript" src="../js/TimeJs.js"></script>  
+    <script type="text/javascript" src="../js/utilSession.js"></script> 
+    <script type="text/javascript" src="../js/addNewGoods.js"></script> 
+    <script type="text/javascript" src="../js/formCheck2.js"></script>
+<style>
+.layui-form-label{
+	margin-left:75px; 
+	width:205px;
+}
+.layui-input-block{
+	margin-left:315px; 
+	width:300px;
+}
+</style>
+<body>
+    <div class="layui-row" style="margin-top:50px">
+        <div class="layui-col-md4">
+            <div class="grid-demo" style="margin:1px"></div>
+        </div>
+        <div class="layui-col-md3">
+            <div class="grid-demo">
+				<div class="layui-form">
+		                  <div class="layui-form-item">
+		                  		<!-- <input type="text" lay-verify=g_name placeholder="请输入数字1"> -->
+								<!-- <input type="text" name="like" lay-skin="primary" lay-verify="otherReq2" placeholder="请输入数字222"> -->
+ 			                        <label class="layui-form-label">商品名 <text style="color:red">(必填)</text>
+			                            </label>
+			                    	<div class="layui-input-block">
+			                            <input type="text" id="g_name" name="" lay-verify="g_name"  placeholder="请输入商品名" autocomplete="off" class="layui-input">
+			                        </div>
+		                  </div> 
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">单价 <text style="color:red">(必填)</text></label>
+		                        <div class="layui-input-block">
+		                            <input type="text" id="g_price" name="" lay-verify="g_price"  placeholder="请输入单价" autocomplete="off" class="layui-input">
+		                        </div>
+		                    </div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">条形码 <text style="color:red">(必填)</text></label>
+		                        <div class="layui-input-block">
+		                            <input type="text" id="g_code" name=""  lay-verify="g_code" placeholder="请输入条形码" autocomplete="off" class="layui-input">
+		                        </div>
+		                    </div>
+		                                        <div class="layui-form-item">
+		                        <label class="layui-form-label">是否促销</label>
+		                        <div class="layui-input-block">
+		                            <select name="interest" id="g_discount" lay-filter="aihao">
+		                                <option value="0">---请选择---</option>
+		                                <option value="1">是</option>
+		                                <option value="0">否</option>
+		                            </select>
+		                        </div>
+		                    </div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">是否限期销售</label>
+		                        <div class="layui-input-block">
+		                            <select name="interest" id="g_promt_data" lay-filter="aihao">
+		                                <option value="0">---请选择---</option>
+		                                <option value="1">是</option>
+		                                <option value="0">否</option>
+		                            </select>
+		                        </div>
+		                    </div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">是否限量销售</label>
+		                        <div class="layui-input-block">
+		                            <select name="interest" id="g_promt_num" lay-filter="aihao">
+		                                <option value="0">---请选择---</option>
+		                                <option value="1">是</option>
+		                                <option value="0">否</option>
+		                            </select>
+		                        </div>
+		                    </div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">促销价格</label>
+		                        <div class="layui-input-block">
+		                            <input type="text" id="g_promt_price" name=""  value="" placeholder="请输入促销价格" autocomplete="off" class="layui-input">
+		                        </div>
+		                    </div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">限期开始时间和结束时间</label>
+		                        <div class="layui-input-block">
+		                             <input type="text" id="g_promt_date_start" name="" value=""  placeholder="请输入限期开始时间,例：2001-01-21" autocomplete="off" class="layui-input">
+											<input id="g_promt_date_start" placeholder="请输入选择限期开始时间和结束时间" type="text" class="layui-input"/>
+		                         </div>
+		                    </div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">限制销售数量</label>
+		                        <div class="layui-input-block">
+		                            <input type="text" id="g_promt_num_number" name="" value=""  placeholder="请输入限制销售数量" autocomplete="off" class="layui-input">
+		                        </div>
+		                    </div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">商品数量 <text style="color:red">(必填)</text></label>
+		                        <div class="layui-input-block">
+		                            <input type="text" id="g_stock" name=""  lay-verify="g_stock" placeholder="请输入库存量" autocomplete="off" class="layui-input">
+		                        </div>
+		                    </div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">报警数量</label>
+		                        <div class="layui-input-block">
+		                            <input type="text" id="g_stock1_urgent" name=""  value="" placeholder="请输入报警商品库存数量" autocomplete="off" class="layui-input">
+		                        </div>
+		                    </div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">计划进货数</label>
+		                        <div class="layui-input-block">
+		                            <input type="text" id="g_plan" name=""  value="" placeholder="请输入计划进货数" autocomplete="off" class="layui-input">
+		                        </div>
+		                    </div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">是否允许销售 <text style="color:red">(必填)</text></label>
+		                        <div class="layui-input-block">
+		                            <select name="interest" id="g_sale" lay-verify="g_sales" lay-filter="aihao">
+		                                <option value="0">---请选择，默认  否  ---</option>
+		                                <option value="1">是</option>
+		                                <option value="0">否</option>
+		                            </select>
+		                        </div>
+		                    </div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">
+			                            <div class="layui-btn layui-btn-sm" data-type="reload" lay-filter="rechar_btn" id="rechar_btn" lay-event="sousuo" >
+											添加新的生产厂商
+										</div>
+		                        		生产厂商名称
+		                        	</label>
+										<div class="layui-input-block">
+								           <select name="mf_name" id="mf_name" lay-verify="mf_name" lay-filter="xmFilter">
+								               <option value=""></option>
+								           </select>
+								        </div>
+								</div>
+		                    <div class="layui-form-item">
+		                        <label class="layui-form-label">
+		                            <div class="layui-btn layui-btn-sm" data-type="reload" lay-filter="rechar_btn" id="rechar_btn" lay-event="sousuo" >
+										添加新的供货商
+									</div>
+		                        	供货商名称
+		                        </label>
+		                        <div class="layui-input-block">
+						           <select name="sp_name" id="sp_name" lay-verify="sp_name" lay-filter="xmFilter">
+						               <option value=""></option>
+						           </select>
+		                        </div>
+		                    </div> 
+					        <div class="layui-form-item" style="display:none">
+					        <!-- <div class="layui-form-item" > -->
+					            <div class="layui-input-block">
+					      			<button class="layui-btn " id="demo1" value="123" lay-submit="" onclick="return che()" lay-filter="demo1">立即提交</button>
+					            </div>
+					        </div> 
+				</div>
+			</div>
+          </div>
+          <div class="layui-col-md5">
+           		<div class="grid-demo" style="margin:1px"></div>
+          </div>
+      </div>
+</body>
+</html>
